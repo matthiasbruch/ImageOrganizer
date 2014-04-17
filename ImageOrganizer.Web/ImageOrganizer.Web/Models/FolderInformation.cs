@@ -21,10 +21,19 @@ namespace ImageOrganizer.Web.Models
         public string LocalPath { get; set; }
     }
 
-    public class CustomFileInformation
+    public class CustomFileInformation : ImageInformation
     {
-        public string FullName { get; set; }
-        public string Name { get; set; }
+        public CustomFileInformation(ImageInformation imageInfo)
+        {
+            Extension = imageInfo.Extension;
+            FileHash = imageInfo.FileHash;
+            FullName = imageInfo.FullName;
+            HRSize = imageInfo.HRSize;
+            Id = imageInfo.Id;
+            Name = imageInfo.Name;
+            Size = imageInfo.Size;
+        }
+
         public string ImageHandlerPath { get; set; }
     }
 }

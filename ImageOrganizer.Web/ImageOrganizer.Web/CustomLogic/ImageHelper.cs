@@ -1,19 +1,42 @@
-﻿using ImageMagick;
+﻿using Humanizer;
+using Humanizer.Bytes;
+using ImageMagick;
 using ImageOrganizer.Web.CustomLogic.Definitions;
 using ImageOrganizer.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 
 namespace ImageOrganizer.Web.CustomLogic
 {
     public class ImageHelper
     {
-        public static ImageData GetImage(string path = null, string mode = null)
+        public static ImageInformation GetImageInformation(string path, ImageData imageData = null)
         {
-            var absolutePath = String.Concat(FileHelper.GetRootPath(), path);
+            var imageInfo = new ImageInformation();
+
+            if (imageData == null)
+            {
+                imageData = GetImageData(path);
+            }
+
+            var fileInfo = new FileInfo(path);
+            imageInfo.FileHash = GetFileHash(imageData.ImageBytes);
+            imageInfo.Size = fileInfo.Length;
+            imageInfo.HRSize = ByteSize.FromBytes(fileInfo.Length).Humanize("MB");
+            imageInfo.FullName = fileInfo.FullName;
+            imageInfo.Name = fileInfo.Name;
+            imageInfo.Extension = fileInfo.Extension;
+
+            return imageInfo;
+        }
+
+        public static ImageData GetImageData(string path, string mode = null)
+        {
+            var absolutePath = path;
 
             if (!String.IsNullOrWhiteSpace(mode))
             {
@@ -60,6 +83,20 @@ namespace ImageOrganizer.Web.CustomLogic
             }
 
             return absolutePath;
+        }
+
+        public static string GetFileHash(string filePath)
+        {
+            return GetFileHash(File.ReadAllBytes(filePath));
+        }
+        
+        public static string GetFileHash(byte[] fileBytes)
+        {
+            using (var sha = SHA256.Create())
+            {
+                var computedHash = sha.ComputeHash(fileBytes);
+                return Convert.ToBase64String(computedHash);
+            }
         }
     }
 }

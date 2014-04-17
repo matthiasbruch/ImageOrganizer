@@ -34,7 +34,8 @@ namespace ImageOrganizer.Web
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Scripts/lightbox/css/lightbox.css"));
+                      "~/Scripts/lightbox/css/lightbox.css",
+                      "~/Content/ImageOrganizer.css"));
         }
     }
 }

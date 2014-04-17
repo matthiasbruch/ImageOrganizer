@@ -40,11 +40,17 @@ else
         {
             foreach (var file in Model.Files)
             {
-                <div style="float:left;">
-                    <div style="width: 190px; height: 190px; line-height: 190px; vertical-align: middle; text-align:center; padding:2px; margin:2px; border: 1px gray dashed; ">
+                <div class="previewListItem">
+                    <div class="previewImageContainer">
                         <a href="@(file.ImageHandlerPath)" data-lightbox="listPreview">
-                            <img src="@(file.ImageHandlerPath)&mode=listPreview" class="previewImage img-rounded" style="border:0px; max-width:100%; max-height:100%;" />
+                            <img src="@(file.ImageHandlerPath)?mode=listPreview" class="previewImage img-rounded" />
                         </a>
+                    </div>
+                    <div class="detailsBox">
+                        <div class="rowLabel">Filename:</div>
+                        <div>@file.Name</div>
+                        <div class="rowLabel">Filesize:</div>
+                        <div>@file.HRSize</div>
                     </div>
                 </div>
             }

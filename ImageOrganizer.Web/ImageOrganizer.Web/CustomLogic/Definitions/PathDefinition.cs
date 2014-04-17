@@ -8,5 +8,6 @@ namespace ImageOrganizer.Web.CustomLogic.Definitions
     public class PathDefinition
     {
         public const string LOCAL_PATH_PREFIX = "LocalPath";
+        public const string LOCAL_PATH_PREFIX_IMAGE = "LocalImage";
     }
 }

@@ -1,0 +1,44 @@
+﻿.previewListItem
+{
+    float:left;
+
+    width: 220px; 
+    height: 240px;
+
+    padding:5px;
+    margin:5px;
+
+    border: 1px gray solid;
+    background-color:#EFEFEF;
+
+    position:relative;
+}
+
+    .previewListItem .previewImageContainer
+    {
+        width: 210px;
+        height: 160px;
+        padding: 5px 5px 10px 5px;
+
+        border-bottom:1px dashed gray;
+
+        text-align:center;
+    }
+
+        .previewListItem .previewImageContainer .previewImage {
+            border:1px solid #000000;
+
+            max-width:100%;
+            max-height:100%;
+        }
+        
+    .previewListItem .detailsBox
+    {
+        padding:5px 0px 0px 0px;
+        font-size:9px;
+    }
+
+        .previewListItem .detailsBox .rowLabel
+        {
+            font-weight:bolder;
+        }

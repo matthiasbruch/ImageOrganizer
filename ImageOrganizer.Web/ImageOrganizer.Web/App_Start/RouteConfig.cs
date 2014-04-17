@@ -15,6 +15,12 @@ namespace ImageOrganizer.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "LocalImage",
+                url: PathDefinition.LOCAL_PATH_PREFIX_IMAGE + "/{*pathInfo}",
+                defaults: new { controller = "Image", action = "Get", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "LocalPath",
                 url: PathDefinition.LOCAL_PATH_PREFIX + "/{*pathInfo}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

@@ -6,6 +6,9 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Web;
+using Humanizer;
+using Humanizer.Bytes;
+using System.Text;
 
 namespace ImageOrganizer.Web.CustomLogic
 {
@@ -45,11 +48,14 @@ namespace ImageOrganizer.Web.CustomLogic
                 folderInformation.Files = new List<CustomFileInformation>();
                 foreach (var file in fileList)
                 {
-                    folderInformation.Files.Add(new CustomFileInformation()
+                    var imageInfo = ImageHelper.GetImageInformation(file.FullName);
+
+                    var imagePathBytes = Encoding.UTF8.GetBytes(file.FullName.Replace(rootPath, String.Empty));
+                    var imagePathBase64 = Convert.ToBase64String(imagePathBytes);
+
+                    folderInformation.Files.Add(new CustomFileInformation(imageInfo)
                     {
-                        Name = file.Name,
-                        FullName = file.FullName,
-                        ImageHandlerPath = String.Format("/ImageHandler.ashx?localPath={0}", HttpUtility.UrlEncode(file.FullName.Replace(rootPath, String.Empty)))
+                        ImageHandlerPath = String.Format("/{0}/{1}", PathDefinition.LOCAL_PATH_PREFIX_IMAGE, imagePathBase64)
                     });
                 }
             }
