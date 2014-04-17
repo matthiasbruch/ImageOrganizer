@@ -1,11 +1,7 @@
-﻿@{
+﻿@using ImageOrganizer.Web.Models
+@model HomeIndexModel
+@{
     ViewBag.Title = "Home Page";
 }
 
-<div class="row">
-    Folders
-</div>
-
-<div class="row">
-    Gallery here
-</div>
+@Html.Partial("~/Views/Shared/FolderContentVisualization.cshtml", Model.FolderInformation ?? new FolderInformation())

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImageOrganizer.Web.CustomLogic.Definitions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,12 @@ namespace ImageOrganizer.Web
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute(
+                name: "LocalPath",
+                url: PathDefinition.LOCAL_PATH_PREFIX + "/{*pathInfo}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            );
 
             routes.MapRoute(
                 name: "Default",

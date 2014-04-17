@@ -1,0 +1,53 @@
+﻿@using ImageOrganizer.Web.Models
+@model FolderInformation
+
+@if (Model == null)
+{
+    <div>No folder configuration was found.</div>
+}
+else
+{
+    <div class="row">
+        Current path: @Model.Path
+    </div>
+
+    <div class="row">
+        @if ((Model.Directories == null) || (!Model.Directories.Any()))
+        {
+            <div>
+                ~No directories~
+            </div>
+        }
+        else
+        {
+            foreach (var directory in Model.Directories)
+            {
+                <div>
+                    <a href="@directory.LocalPath">@directory.Name</a>
+                </div>
+            }
+        }
+    </div>
+
+    <div class="row">        
+        @if ((Model.Files == null) || (!Model.Files.Any()))
+        {
+            <div>
+                ~No files~
+            </div>
+        }
+        else
+        {
+            foreach (var file in Model.Files)
+            {
+                <div style="float:left;">
+                    <div style="width: 190px; height: 190px; line-height: 190px; vertical-align: middle; text-align:center; padding:2px; margin:2px; border: 1px gray dashed; ">
+                        <a href="@(file.ImageHandlerPath)" data-lightbox="listPreview">
+                            <img src="@(file.ImageHandlerPath)&mode=listPreview" class="previewImage img-rounded" style="border:0px; max-width:100%; max-height:100%;" />
+                        </a>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+}

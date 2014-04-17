@@ -53,3 +53,5 @@ D:\MyProjects\ImageOrganizer\ImageOrganizer.Web\ImageOrganizer.Web\bin\Microsoft
 D:\MyProjects\ImageOrganizer\ImageOrganizer.Web\ImageOrganizer.Web\obj\Debug\ImageOrganizer.Web.csprojResolveAssemblyReference.cache
 D:\MyProjects\ImageOrganizer\ImageOrganizer.Web\ImageOrganizer.Web\obj\Debug\ImageOrganizer.Web.dll
 D:\MyProjects\ImageOrganizer\ImageOrganizer.Web\ImageOrganizer.Web\obj\Debug\ImageOrganizer.Web.pdb
+D:\MyProjects\ImageOrganizer\ImageOrganizer.Web\ImageOrganizer.Web\bin\Magick.NET-AnyCPU.dll
+D:\MyProjects\ImageOrganizer\ImageOrganizer.Web\ImageOrganizer.Web\bin\Magick.NET-AnyCPU.xml

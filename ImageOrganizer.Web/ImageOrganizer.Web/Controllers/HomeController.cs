@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ImageOrganizer.Web.CustomLogic;
+using ImageOrganizer.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,21 +12,11 @@ namespace ImageOrganizer.Web.Controllers
     {
         public ActionResult Index()
         {
-            return View();
-        }
+            var viewModel = new HomeIndexModel();
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+            viewModel.FolderInformation = FileHelper.GetFolderInformation(RouteData.Values["pathInfo"] as string);
 
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return View("~/Views/Home/Index.cshtml", viewModel);
         }
     }
 }

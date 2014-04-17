@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Magick.NET-AnyCPU">
+      <HintPath>..\packages\Magick.NET-Q16-AnyCPU.6.8.8.1001\lib\net40-client\Magick.NET-AnyCPU.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -160,11 +163,20 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="CustomLogic\Definitions\PathDefinition.cs" />
+    <Compile Include="CustomLogic\FileHelper.cs" />
+    <Compile Include="CustomLogic\ImageHelper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ImageHandler.ashx.cs">
+      <DependentUpon>ImageHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\FolderInformation.cs" />
+    <Compile Include="Models\HomeIndexModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ImageData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -177,7 +189,9 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ImageHandler.ashx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\ImageOrganizer.ImageHelper.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -185,6 +199,29 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\lightbox\css\lightbox.css" />
+    <Content Include="Scripts\lightbox\css\screen.css" />
+    <Content Include="Scripts\lightbox\img\close.png" />
+    <Content Include="Scripts\lightbox\img\demopage\favicon.png" />
+    <Content Include="Scripts\lightbox\img\demopage\image-1.jpg" />
+    <Content Include="Scripts\lightbox\img\demopage\image-2.jpg" />
+    <Content Include="Scripts\lightbox\img\demopage\image-3.jpg" />
+    <Content Include="Scripts\lightbox\img\demopage\image-4.jpg" />
+    <Content Include="Scripts\lightbox\img\demopage\image-5.jpg" />
+    <Content Include="Scripts\lightbox\img\demopage\image-6.jpg" />
+    <Content Include="Scripts\lightbox\img\demopage\thumb-1.jpg" />
+    <Content Include="Scripts\lightbox\img\demopage\thumb-2.jpg" />
+    <Content Include="Scripts\lightbox\img\demopage\thumb-3.jpg" />
+    <Content Include="Scripts\lightbox\img\demopage\thumb-4.jpg" />
+    <Content Include="Scripts\lightbox\img\demopage\thumb-5.jpg" />
+    <Content Include="Scripts\lightbox\img\demopage\thumb-6.jpg" />
+    <Content Include="Scripts\lightbox\img\loading.gif" />
+    <Content Include="Scripts\lightbox\img\next.png" />
+    <Content Include="Scripts\lightbox\img\prev.png" />
+    <Content Include="Scripts\lightbox\index.html" />
+    <Content Include="Scripts\lightbox\js\jquery-1.11.0.min.js" />
+    <Content Include="Scripts\lightbox\js\lightbox.js" />
+    <Content Include="Scripts\lightbox\js\lightbox.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -214,6 +251,12 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\FolderContentVisualization.cshtml" />
+    <Content Include="Scripts\lightbox\img\demopage\.DS_Store" />
+    <Content Include="Scripts\lightbox\js\.DS_Store" />
+    <Content Include="Scripts\lightbox\js\jquery-1.11.0.min.map" />
+    <Content Include="Scripts\lightbox\js\lightbox.min.map" />
+    <Content Include="Scripts\lightbox\README.markdown" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
