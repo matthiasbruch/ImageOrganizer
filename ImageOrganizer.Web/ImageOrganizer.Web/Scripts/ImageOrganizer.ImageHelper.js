@@ -29,9 +29,9 @@
 
     return {
         init: function () {
-            $j('.previewImage').on('mousedown', handleMouseDown);
+            $j('.preview-image').on('mousedown', handleMouseDown);
 
-            $j('.handleHeaderBar').on('click', handleHeaderBarClicked);
+            $j('.handle-header-bar').on('click', handleHeaderBarClicked);
         }
     };
 }(jQuery);

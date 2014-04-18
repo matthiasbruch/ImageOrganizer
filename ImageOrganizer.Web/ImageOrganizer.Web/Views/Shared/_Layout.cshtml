@@ -32,8 +32,27 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>Credits to <a href="http://www.divisator.com">Divi</a>, <a href="http://www.netzkern.de">netzkern AG</a> and <a href="http://www.imagemagick.org/">ImageMagick</a></p>
+            <p>Credits to <a href="http://www.divisator.com" target="_blank">Divi</a>, <a href="http://www.netzkern.de" target="_blank">netzkern AG</a></p>
+            <p>
+                Technologies:
+                <a href="http://aspnetwebstack.codeplex.com/">ASP.NET MVC</a>,
+                <a href="http://getbootstrap.com/">Bootstrap</a>,
+                <a href="http://www.imagemagick.org/">ImageMagick</a>,
+                <a href="http://magick.codeplex.com/">Magick.NET</a>,
+                <a href="http://jquery.com/">jQuery</a>,
+                <a href="https://github.com/MehdiK/Humanizer/">Humanizer</a>
+            </p>
         </footer>
+    </div>
+
+    <div id="input-box-container">
+        <div class="field-container">
+            <div class="field-label">Enter command:</div>
+            <input type="text" class="command-box" />
+        </div>
+        <div class="command-suggest-list">
+
+        </div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

@@ -40,7 +40,7 @@ else
         {
             foreach (var directory in Model.Directories)
             {
-                <div class="directoryRow">
+                <div class="directory-row">
                     <a href="@directory.LocalPath">@directory.Name</a>
                 </div>
             }
@@ -58,27 +58,29 @@ else
         {
             foreach (var file in Model.Files)
             {
-                <div class="previewListItem">
-                    <div class="handleHeaderBar">
+                <div class="preview-list-item">
+                    <div class="handle-header-bar">
                         <input type="checkbox" name="cbUseThis" />
                     </div>
-                    <div class="previewImageContainer">
+                    <div class="preview-image-container">
                         <a href="@(file.ImageHandlerPath)" data-lightbox="listPreview">
-                            <img src="@(file.ImageHandlerPath)?mode=@(AutoGenerateFolder.LIST_PREVIEW)" class="previewImage img-rounded" />
+                            <img src="@(file.ImageHandlerPath)?mode=@(AutoGenerateFolder.LIST_PREVIEW)" class="preview-image img-rounded" />
                         </a>
                     </div>
-                    <div class="detailsBox">
-                        <div class="rowLabel">filename:</div>
+                    <div class="details-box">
+                        <div class="row-label">filename:</div>
                         <div>@file.Name</div>
-                        <div class="rowLabel">filesize:</div>
+                        <div class="row-label">filesize:</div>
                         <div>@file.HRSize</div>
-                        <div class="rowLabel">last change:</div>
+                        <div class="row-label">last change:</div>
                         <div>@file.LastChange.ToString("yyyy-MM-dd HH:mm:ss")</div>
-                        <div class="rowLabel">capture date:</div>
+                        <div class="row-label">capture date:</div>
                         <div>@file.OriginalDate.ToString("yyyy-MM-dd HH:mm:ss")</div>
                     </div>
                 </div>
             }
+
+            <div style="clear:both;"></div>
         }
     </div>
 }
