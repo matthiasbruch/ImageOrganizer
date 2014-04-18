@@ -5,6 +5,7 @@ using ImageOrganizer.Web.CustomLogic.Definitions;
 using ImageOrganizer.Web.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -27,9 +28,39 @@ namespace ImageOrganizer.Web.CustomLogic
             imageInfo.FileHash = GetFileHash(imageData.ImageBytes);
             imageInfo.Size = fileInfo.Length;
             imageInfo.HRSize = ByteSize.FromBytes(fileInfo.Length).Humanize("MB");
+            imageInfo.LastChange = fileInfo.LastWriteTime;
             imageInfo.FullName = fileInfo.FullName;
             imageInfo.Name = fileInfo.Name;
             imageInfo.Extension = fileInfo.Extension;
+
+
+            using (MagickImage image = new MagickImage(imageInfo.FullName))
+            {
+                // Searching for correct exif tag.
+                // [MB]
+                var exifProfile = image.GetExifProfile();
+                var originalDateTime = exifProfile.Values.FirstOrDefault(exifInfo => {
+                    if (exifInfo.Tag != null)
+                    {
+                        var tagName = exifInfo.Tag.ToString().ToLowerInvariant();
+
+                        return (tagName == "datetimeoriginal");
+                    }
+
+                    return false;
+                });
+
+                // Trying to get the date from the exif-tag.
+                // [MB]
+                if (originalDateTime != null)
+                {
+                    DateTime parsedDate;
+                    if (DateTime.TryParseExact(originalDateTime.Value as string, "yyyy:MM:dd hh:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDate))
+                    {
+                        imageInfo.OriginalDate = parsedDate;
+                    }
+                }
+            }
 
             return imageInfo;
         }

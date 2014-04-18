@@ -40,6 +40,9 @@ namespace ImageOrganizer.Web.Models
             Id = imageInfo.Id;
             Name = imageInfo.Name;
             Size = imageInfo.Size;
+
+            LastChange = imageInfo.LastChange;
+            OriginalDate = imageInfo.OriginalDate;
         }
 
         public string ImageHandlerPath { get; set; }

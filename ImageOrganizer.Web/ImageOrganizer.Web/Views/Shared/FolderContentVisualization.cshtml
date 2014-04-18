@@ -59,16 +59,23 @@ else
             foreach (var file in Model.Files)
             {
                 <div class="previewListItem">
+                    <div class="handleHeaderBar">
+                        <input type="checkbox" name="cbUseThis" />
+                    </div>
                     <div class="previewImageContainer">
                         <a href="@(file.ImageHandlerPath)" data-lightbox="listPreview">
                             <img src="@(file.ImageHandlerPath)?mode=@(AutoGenerateFolder.LIST_PREVIEW)" class="previewImage img-rounded" />
                         </a>
                     </div>
                     <div class="detailsBox">
-                        <div class="rowLabel">Filename:</div>
+                        <div class="rowLabel">filename:</div>
                         <div>@file.Name</div>
-                        <div class="rowLabel">Filesize:</div>
+                        <div class="rowLabel">filesize:</div>
                         <div>@file.HRSize</div>
+                        <div class="rowLabel">last change:</div>
+                        <div>@file.LastChange.ToString("yyyy-MM-dd HH:mm:ss")</div>
+                        <div class="rowLabel">capture date:</div>
+                        <div>@file.OriginalDate.ToString("yyyy-MM-dd HH:mm:ss")</div>
                     </div>
                 </div>
             }
