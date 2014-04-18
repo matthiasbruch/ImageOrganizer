@@ -165,8 +165,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CommandController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
+    <Compile Include="Controllers\SuggestController.cs" />
     <Compile Include="CustomLogic\Definitions\AutoGenerateFolder.cs" />
     <Compile Include="CustomLogic\Definitions\PathDefinition.cs" />
     <Compile Include="CustomLogic\FileHelper.cs" />
@@ -191,7 +193,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\Layout\folder.png" />
+    <Content Include="Images\Layout\cog16x16.png" />
+    <Content Include="Images\Layout\cog32x32.png" />
+    <Content Include="Images\Layout\folder16x16.png" />
+    <Content Include="Images\Layout\folder32x32.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -265,7 +270,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Command\" />
     <Folder Include="Views\Image\" />
+    <Folder Include="Views\Suggest\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -107,3 +107,37 @@
         width:100%;
         max-width:none;
     }
+
+    #input-box-container .current-command {
+        height:20px;
+        margin-top:10px;
+        font-size:10px;
+    }
+
+    #input-box-container .command-suggest-list
+    {
+
+    }
+    
+        #input-box-container .command-suggest-list .suggest-list-item
+        {
+            background-image:url('../Images/Layout/cog16x16.png');
+            background-repeat:no-repeat;
+            background-position: 2px 4px;
+
+            height:26px;
+            padding:2px 0px 2px 20px;
+
+            border-bottom:1px solid gray;
+        }
+
+            #input-box-container .command-suggest-list .suggest-list-item.list-type-folder
+            {
+            background-image:url('../Images/Layout/folder16x16.png');
+            }
+    
+            #input-box-container .command-suggest-list .suggest-list-item.selected
+            {
+                color:#FFFFFF;
+                background-color:#666666;
+            }

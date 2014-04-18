@@ -8,6 +8,8 @@
 }
 else
 {    
+    <input type="hidden" class="current-path" value="@Model.Path" />
+    
     <div class="row" style="margin:10px 0px 10px 0px;">
         Current path:
         
@@ -60,7 +62,7 @@ else
             {
                 <div class="preview-list-item">
                     <div class="handle-header-bar">
-                        <input type="checkbox" name="cbUseThis" />
+                        <input type="checkbox" class="checkbox-use-this" name="cbUseThis" value="@file.Id" />
                     </div>
                     <div class="preview-image-container">
                         <a href="@(file.ImageHandlerPath)" data-lightbox="listPreview">
