@@ -42,3 +42,20 @@
         {
             font-weight:bolder;
         }
+
+.directoryRow
+{
+    background-image:url('../Images/Layout/folder32x32.png');
+    background-repeat:no-repeat;
+    background-position:5px 2px;
+
+    height:36px;
+    padding:10px 0px 0px 43px;
+
+    border-bottom:1px solid gray;
+}
+
+    .directoryRow a 
+    {
+        color:#000000;
+    }

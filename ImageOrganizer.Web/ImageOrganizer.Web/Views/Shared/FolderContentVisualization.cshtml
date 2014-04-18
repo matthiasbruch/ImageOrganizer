@@ -1,4 +1,5 @@
 ﻿@using ImageOrganizer.Web.Models
+@using ImageOrganizer.Web.CustomLogic.Definitions
 @model FolderInformation
 
 @if (Model == null)
@@ -6,9 +7,26 @@
     <div>No folder configuration was found.</div>
 }
 else
-{
-    <div class="row">
-        Current path: @Model.Path
+{    
+    <div class="row" style="margin:10px 0px 10px 0px;">
+        Current path:
+        
+        @if ((Model.BreadCrumb != null) && Model.BreadCrumb.Any())
+        {
+            for (var breadcrumbIdx = 0; breadcrumbIdx < Model.BreadCrumb.Count; breadcrumbIdx++)
+            {
+                var breadCrumbPart = Model.BreadCrumb[breadcrumbIdx];
+                
+                <a href="@breadCrumbPart.Path">
+                    @breadCrumbPart.Label
+                </a>
+            
+                if (breadcrumbIdx < (Model.BreadCrumb.Count - 1))
+                {
+                    <span> &raquo; </span>
+                }
+            }
+        }
     </div>
 
     <div class="row">
@@ -22,14 +40,14 @@ else
         {
             foreach (var directory in Model.Directories)
             {
-                <div>
+                <div class="directoryRow">
                     <a href="@directory.LocalPath">@directory.Name</a>
                 </div>
             }
         }
     </div>
 
-    <div class="row">        
+    <div class="row" style="margin-top:20px;">        
         @if ((Model.Files == null) || (!Model.Files.Any()))
         {
             <div>
@@ -43,7 +61,7 @@ else
                 <div class="previewListItem">
                     <div class="previewImageContainer">
                         <a href="@(file.ImageHandlerPath)" data-lightbox="listPreview">
-                            <img src="@(file.ImageHandlerPath)?mode=listPreview" class="previewImage img-rounded" />
+                            <img src="@(file.ImageHandlerPath)?mode=@(AutoGenerateFolder.LIST_PREVIEW)" class="previewImage img-rounded" />
                         </a>
                     </div>
                     <div class="detailsBox">

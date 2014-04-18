@@ -12,6 +12,14 @@ namespace ImageOrganizer.Web.Models
         public List<CustomFileInformation> Files { get; set; }
 
         public string Path { get; set; }
+
+        public List<BreadCrumbPart> BreadCrumb { get; set; }
+    }
+
+    public class BreadCrumbPart
+    {
+        public string Label { get; set; }
+        public string Path { get; set; }
     }
 
     public class CustomFolderInformation
